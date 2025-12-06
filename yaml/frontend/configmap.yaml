@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: guestbook-frontend-config
+data:
+  guestbook_name: "Blue Lake Hotel" 
+  backend_uri: "https://guestbook.backend.deepak.hotel/guestbook" 

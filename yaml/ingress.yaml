@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: guestbook-guestbook-ingress
+  # annotations:
+  #   nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  ingressClassName: traefik
+  # tls:
+  #   - hosts:
+  #       - guestbook.frontend.deepak.hotel
+  #       - guestbook.backend.deepak.hotel
+  #     secretName: nginx-tls-secret
+  rules:
+  - host: guestbook.frontend.deepak.hotel
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: guestbook-frontend
+            port: 
+              number: 80
+  - host: guestbook.backend.deepak.hotel
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: guestbook-backend
+            port:
+              number: 80
