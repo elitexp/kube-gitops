@@ -69,7 +69,7 @@ jobs:
           CI_BOT: ${{ secrets.CI_BOT }}
         run: |
           git clone https://x-access-token:${PAT}@github.com/cloud-native-nepal/central-ci.git develop
-          cd aleo-devops
+          cd central-ci
           git config user.name "ci-bot"
           git config user.email "$CI_BOT"
           git fetch origin develop
@@ -80,8 +80,9 @@ jobs:
         env:
           PAT: ${{ secrets.CI_BOT_PAT }}
         run: |
-          cd cloud-native-nepal/central-ci/overlays/dev
-          kustomize edit set image globomantics-hotel=ghcr.io/${{ github.repository_owner }}/globomantics-hotel:${IMAGE_TAG}
+          cd apps/globomantics-hotel/overlays/dev
+          kustomize edit set image openlabfree/globomantics-fe:v4=ghcr.io/${{ github.repository_owner }}/globomantics-hotel-frontend:${IMAGE_TAG}
+          kustomize edit set image openlabfree/globomantics-be:v7=ghcr.io/${{ github.repository_owner }}/globomantics-hotel-backend:${IMAGE_TAG}
           git add .
-          git commit -m "Update globomantics-hotel image to ${IMAGE_TAG}"
+          git commit -m "Update globomantics-hotel backend and frontend images to ${IMAGE_TAG}"
           git push https://x-access-token:${PAT}@github.com/cloud-native-nepal/central-ci.git develop
