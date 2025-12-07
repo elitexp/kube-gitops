@@ -68,7 +68,7 @@ jobs:
           PAT: ${{ secrets.CI_BOT_PAT }}
           CI_BOT: ${{ secrets.CI_BOT }}
         run: |
-          git clone https://x-access-token:${PAT}@github.com/cloud-native-nepal/central-ci.git develop
+          git clone https://x-access-token:${PAT}@github.com/elitexp/kube-gitops-ci-cd.git develop
           cd central-ci
           git config user.name "ci-bot"
           git config user.email "$CI_BOT"
@@ -85,4 +85,4 @@ jobs:
           kustomize edit set image openlabfree/globomantics-be:v7=ghcr.io/${{ github.repository_owner }}/globomantics-hotel-backend:${IMAGE_TAG}
           git add .
           git commit -m "Update globomantics-hotel backend and frontend images to ${IMAGE_TAG}"
-          git push https://x-access-token:${PAT}@github.com/cloud-native-nepal/central-ci.git develop
+          git push https://x-access-token:${PAT}@github.com/elitexp/kube-gitops-ci-cd.git develop
