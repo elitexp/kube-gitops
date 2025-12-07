@@ -68,7 +68,7 @@ jobs:
           PAT: ${{ secrets.CI_BOT_PAT }}
           CI_BOT: ${{ secrets.CI_BOT }}
         run: |
-          git clone https://x-access-token:${PAT}@github.com/elitexp/kube-gitops-ci-cd.git develop
+          git clone https://x-access-token:${PAT}@github.com/elitexp/kube-gitops-ci-cd.git
           cd kube-gitops-ci-cd
           git config user.name "ci-bot"
           git config user.email "$CI_BOT"
