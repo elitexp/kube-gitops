@@ -80,7 +80,7 @@ jobs:
         env:
           PAT: ${{ secrets.CI_BOT_PAT }}
         run: |
-          cd apps/globomantics-hotel/overlays/dev
+          cd kube-gitops-ci-cd/apps/globomantics-hotel/overlays/dev
           kustomize edit set image openlabfree/globomantics-fe:v4=ghcr.io/${{ github.repository_owner }}/globomantics-hotel-frontend:${IMAGE_TAG}
           kustomize edit set image openlabfree/globomantics-be:v7=ghcr.io/${{ github.repository_owner }}/globomantics-hotel-backend:${IMAGE_TAG}
           git add .
